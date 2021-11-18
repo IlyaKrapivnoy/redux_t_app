@@ -2,7 +2,8 @@ import { Button, Divider, List, ListItemText } from '@material-ui/core';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import './App.css';
-import { customerReducer } from './store/customerReducer';
+// import { customerReducer } from './store/customerReducer';
+import CancelPresentationIcon from '@material-ui/icons/CancelPresentation';
 
 function App() {
     const dispatch = useDispatch();
@@ -71,8 +72,9 @@ function App() {
                     {customers.map((customer) => (
                         <List component='nav'>
                             <ListItemText
-                                primary={customer.name}
-                                onClick={() => removeCustomer(customer)}
+                                // primary={<>{customer.name}</> <HighlightOffIcon />}
+                                primary={<div className="flex justify-between">{customer.name} <CancelPresentationIcon onClick={() => removeCustomer(customer)} /></div>}
+                                
                             />
                             <Divider />
                         </List>
