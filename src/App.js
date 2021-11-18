@@ -12,12 +12,17 @@ function App() {
     console.log('cash>>', cash);
     console.log('customers>>', customers);
 
+    const ADD_CASH = 'ADD_CASH';
+    const GET_CASH = 'GET_CASH';
+    const ADD_CUSTOMER = 'ADD_CUSTOMER';
+    const REMOVE_CUSTOMERS = 'REMOVE_CUSTOMERS';
+
     const addCash = (cash) => {
-        dispatch({ type: 'ADD_CASH', payload: cash });
+        dispatch({ type: ADD_CASH, payload: cash });
     };
 
     const getCash = (cash) => {
-        dispatch({ type: 'GET_CASH', payload: cash });
+        dispatch({ type: GET_CASH, payload: cash });
     };
 
     const addCustomer = (name) => {
@@ -25,11 +30,11 @@ function App() {
             name,
             id: Date.now(),
         };
-        dispatch({ type: 'ADD_CUSTOMER', payload: customer });
+        dispatch({ type: ADD_CUSTOMER, payload: customer });
     };
 
     const removeCustomer = (customer) => {
-        dispatch({ type: 'REMOVE_CUSTOMERS', payload: customer.id });
+        dispatch({ type: REMOVE_CUSTOMERS, payload: customer.id });
     };
 
     return (
