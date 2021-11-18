@@ -8,7 +8,10 @@ function App() {
     console.log('cash>>', cash);
 
     return (
-        <div>
+        <div
+            style={{ display: 'flex', justifyContent: 'center', marginTop: 30 }}
+        >
+            <div style={{ fontSize: 20 }}>{cash}</div>
             <button>Add Cash</button>
             <button>Get Cash</button>
         </div>
