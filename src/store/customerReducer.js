@@ -1,12 +1,17 @@
+import { REMOVE_CUSTOMERS, ADD_CUSTOMER } from './types';
+
 const defaultState = {
     customers: [],
 };
 
 export const customerReducer = (state = defaultState, action) => {
     switch (action.type) {
-        case 'ADD_CUSTOMER':
-            return { ...state, customers: [...state.customers, action.payload] };
-        case 'REMOVE_CUSTOMERS':
+        case ADD_CUSTOMER:
+            return {
+                ...state,
+                customers: [...state.customers, action.payload],
+            };
+        case REMOVE_CUSTOMERS:
             return {
                 ...state,
                 customers: state.customers.filter(
@@ -19,11 +24,11 @@ export const customerReducer = (state = defaultState, action) => {
 };
 
 export const addCustomerAction = (payload) => ({
-    type: 'ADD_CUSTOMER',
+    type: ADD_CUSTOMER,
     payload,
 });
 
 export const removeCustomerAction = (payload) => ({
-    type: 'REMOVE_CUSTOMERS',
+    type: REMOVE_CUSTOMERS,
     payload,
 });

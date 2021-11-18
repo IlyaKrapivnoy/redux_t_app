@@ -2,8 +2,12 @@ import { Button, Divider, List, ListItemText } from '@material-ui/core';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import './App.css';
-// import { customerReducer } from './store/customerReducer';
 import CancelPresentationIcon from '@material-ui/icons/CancelPresentation';
+import {
+    addCustomerAction,
+    removeCustomerAction,
+} from './store/customerReducer';
+import { addCashAction, getCashAction } from './store/cashReducer';
 
 function App() {
     const dispatch = useDispatch();
@@ -12,17 +16,12 @@ function App() {
     console.log('cash>>', cash);
     console.log('customers>>', customers);
 
-    const ADD_CASH = 'ADD_CASH';
-    const GET_CASH = 'GET_CASH';
-    const ADD_CUSTOMER = 'ADD_CUSTOMER';
-    const REMOVE_CUSTOMERS = 'REMOVE_CUSTOMERS';
-
     const addCash = (cash) => {
-        dispatch({ type: ADD_CASH, payload: cash });
+        dispatch(addCashAction(cash));
     };
 
     const getCash = (cash) => {
-        dispatch({ type: GET_CASH, payload: cash });
+        dispatch(getCashAction(cash));
     };
 
     const addCustomer = (name) => {
@@ -30,11 +29,11 @@ function App() {
             name,
             id: Date.now(),
         };
-        dispatch({ type: ADD_CUSTOMER, payload: customer });
+        dispatch(addCustomerAction(customer));
     };
 
     const removeCustomer = (customer) => {
-        dispatch({ type: REMOVE_CUSTOMERS, payload: customer.id });
+        dispatch(removeCustomerAction(customer.id));
     };
 
     return (
@@ -78,8 +77,16 @@ function App() {
                         <List component='nav'>
                             <ListItemText
                                 // primary={<>{customer.name}</> <HighlightOffIcon />}
-                                primary={<div className="flex justify-between">{customer.name} <CancelPresentationIcon onClick={() => removeCustomer(customer)} /></div>}
-                                
+                                primary={
+                                    <div className='flex justify-between'>
+                                        {customer.name}{' '}
+                                        <CancelPresentationIcon
+                                            onClick={() =>
+                                                removeCustomer(customer)
+                                            }
+                                        />
+                                    </div>
+                                }
                             />
                             <Divider />
                         </List>
