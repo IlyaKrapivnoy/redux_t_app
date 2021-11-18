@@ -8,6 +8,7 @@ import {
     removeCustomerAction,
 } from './store/customerReducer';
 import { addCashAction, getCashAction } from './store/cashReducer';
+import { fetchCustomers } from './store/asyncActions/customers';
 
 function App() {
     const dispatch = useDispatch();
@@ -62,6 +63,12 @@ function App() {
                     onClick={() => addCustomer(prompt())}
                 >
                     Add Customer
+                </Button>
+                <Button
+                    variant='contained'
+                    onClick={() => dispatch(fetchCustomers())}
+                >
+                    Add Customer from API
                 </Button>
                 <Button
                     variant='contained'
