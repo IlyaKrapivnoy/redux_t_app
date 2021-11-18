@@ -1,3 +1,4 @@
+import { Button } from '@material-ui/core';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import './App.css';
@@ -12,8 +13,12 @@ function App() {
             style={{ display: 'flex', justifyContent: 'center', marginTop: 30 }}
         >
             <div style={{ fontSize: 20 }}>{cash}</div>
-            <button>Add Cash</button>
-            <button>Get Cash</button>
+            <Button variant='contained' color='primary'>
+                Add Cash
+            </Button>
+            <Button variant='contained' color='secondary'>
+                Get Cash
+            </Button>
         </div>
     );
 }
