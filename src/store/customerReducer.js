@@ -7,7 +7,12 @@ export const customerReducer = (state = defaultState, action) => {
         case 'ADD_CUSTOMER':
             return { ...state, customers: [...state.customers, action.payload] };
         case 'REMOVE_CUSTOMERS':
-            return { ...state,  };
+            return {
+                ...state,
+                customers: state.customers.filter(
+                    (customer) => customer.id !== action.payload
+                ),
+            };
         default:
             return state;
     }

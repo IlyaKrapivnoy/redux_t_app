@@ -1,4 +1,4 @@
-import { Button } from '@material-ui/core';
+import { Button, Divider, List, ListItemText } from '@material-ui/core';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import './App.css';
@@ -27,6 +27,10 @@ function App() {
         dispatch({ type: 'ADD_CUSTOMER', payload: customer });
     };
 
+    const removeCustomer = (customer) => {
+        dispatch({ type: 'REMOVE_CUSTOMERS', payload: customer.id });
+    };
+
     return (
         <div className='flex flex-col items-center mt-20'>
             <div className='text-3xl'>{cash}</div>
@@ -50,7 +54,7 @@ function App() {
                 <Button
                     variant='contained'
                     color='primary'
-                    onClick={() => addCustomer()}
+                    onClick={() => addCustomer(prompt())}
                 >
                     Add Customer
                 </Button>
@@ -65,7 +69,13 @@ function App() {
             {customers.length > 0 ? (
                 <div>
                     {customers.map((customer) => (
-                        <div>{customer.name}</div>
+                        <List component='nav'>
+                            <ListItemText
+                                primary={customer.name}
+                                onClick={() => removeCustomer(customer)}
+                            />
+                            <Divider />
+                        </List>
                     ))}
                 </div>
             ) : (
