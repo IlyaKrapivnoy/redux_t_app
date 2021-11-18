@@ -9,16 +9,16 @@ function App() {
     console.log('cash>>', cash);
 
     return (
-        <div
-            style={{ display: 'flex', justifyContent: 'center', marginTop: 30 }}
-        >
-            <div style={{ fontSize: 20 }}>{cash}</div>
-            <Button variant='contained' color='primary'>
-                Add Cash
-            </Button>
-            <Button variant='contained' color='secondary'>
-                Get Cash
-            </Button>
+        <div className='flex flex-col items-center mt-20'>
+            <div className='text-3xl'>{cash}</div>
+            <div className='my-10'>
+                <Button variant='contained' color='primary'>
+                    Add Cash
+                </Button>
+                <Button variant='contained' color='secondary'>
+                    Get Cash
+                </Button>
+            </div>
         </div>
     );
 }
