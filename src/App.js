@@ -83,7 +83,6 @@ function App() {
                     {customers.map((customer) => (
                         <List component='nav'>
                             <ListItemText
-                                // primary={<>{customer.name}</> <HighlightOffIcon />}
                                 primary={
                                     <div className='flex justify-between'>
                                         {customer.name}{' '}
