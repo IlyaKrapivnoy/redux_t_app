@@ -1,7 +1,6 @@
 import { Button, Divider, List, ListItemText } from '@material-ui/core';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
-import './App.css';
 import CancelPresentationIcon from '@material-ui/icons/CancelPresentation';
 import {
     addCustomerAction,
